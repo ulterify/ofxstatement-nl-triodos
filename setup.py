@@ -9,15 +9,15 @@ version = "0.0.1"
 with open('README.rst') as f:
     long_description = f.read()
 
-setup(name='ofxstatement-sample',
+setup(name='ofxstatement-be-triodos',
       version=version,
-      author="Andrey Lebedev",
-      author_email="andrey@lebedev.lt",
-      url="https://github.com/kedder/ofxstatement",
-      description=("Sample plugin for ofxstatement"),
+      author="Bernard Butaye",
+      author_email="",
+      url="https://github.com/renardeau/ofxstatement-be-triodos",
+      description=("ofxstatement plugin for parsing Belgian Triodos bank's CSV statements to OFX"),
       long_description=long_description,
       license="GPLv3",
-      keywords=["ofx", "banking", "statement"],
+      keywords=["ofx", "banking", "statement", "triodos", "csv"],
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Programming Language :: Python :: 3',
@@ -32,7 +32,7 @@ setup(name='ofxstatement-sample',
       namespace_packages=["ofxstatement", "ofxstatement.plugins"],
       entry_points={
           'ofxstatement':
-          ['sample = ofxstatement.plugins.sample:SamplePlugin']
+          ['triodosbe = ofxstatement.plugins.triodosbe:TriodosBePlugin']
           },
       install_requires=['ofxstatement'],
       include_package_data=True,
