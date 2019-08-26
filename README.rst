@@ -18,5 +18,5 @@ your own plugin.
 
 To convert proprietary ``triodos.csv`` to OFX ``triodos.ofx``, run::
 
-    $ ofxstatement -t triodosbe triodos.csv triodos.ofx
+    $ ofxstatement convert -t triodosbe triodos.csv triodos.ofx
 
