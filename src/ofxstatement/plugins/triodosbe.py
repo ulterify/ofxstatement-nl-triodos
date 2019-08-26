@@ -42,9 +42,7 @@ class TriodosBeParser(CsvStatementParser):
     def split_records(self):
         """Return iterable object consisting of a line per transaction
         """
-        reader = csv.reader(self.fin)
-        next(reader, None)
-        return reader
+        return csv.reader(self.fin)
 
     def parse_record(self, line):
         """Parse given transaction line and return StatementLine object
