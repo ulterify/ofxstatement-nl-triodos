@@ -2,7 +2,9 @@
 Triodos BE plugin for ofxstatement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This project provides  an `ofxstatement`_ plugin for converting the Belgian Triodos bank's CSV format statements to OFX.
+This project provides  an `ofxstatement`_ plugin for converting the German Triodos bank's CSV format statements to OFX.
+Incidentally, the German GLS Bank seems to use the same csv structure, so this script could be used as well.
+Just keep in mind that Triodos' Swift Code is inserted in every resulting OFX.
 
 `ofxstatement`_ is a tool to convert proprietary bank statement to OFX format,
 suitable for importing to GnuCash. Plugin for ofxstatement parses a
@@ -18,5 +20,5 @@ your own plugin.
 
 To convert proprietary ``triodos.csv`` to OFX ``triodos.ofx``, run::
 
-    $ ofxstatement convert -t triodosbe triodos.csv triodos.ofx
+    $ ofxstatement convert -t triodosde triodos.csv triodos.ofx
 
