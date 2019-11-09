@@ -3,29 +3,30 @@ import csv
 from ofxstatement.plugin import Plugin
 from ofxstatement.parser import CsvStatementParser
 from ofxstatement.statement import Statement, StatementLine, BankAccount, recalculate_balance
+from pdb import set_trace as bp
 
 
-class TriodosBePlugin(Plugin):
-    """Belgian Triodos plugin for ofxstatement
+class TriodosDePlugin(Plugin):
+    """German Triodos plugin for ofxstatement
     """
 
     def get_parser(self, filename):
         f = open(filename, 'r', encoding=self.settings.get("charset", "ISO-8859-1"))
-        parser = TriodosBeParser(f)
+        parser = TriodosDeParser(f)
         return parser
 
 
-class TriodosBeParser(CsvStatementParser):
-    date_format = "%d-%m-%Y"
+class TriodosDeParser(CsvStatementParser):
+    date_format = "%d.%m.%Y"
     mappings = {
         'date': 0,
-        'payee': 5,
+        'payee': 3,
         'memo': 8,
-        'amount': 2
+        'amount': 11
     }
 
     def __init__(self, filename):
-        self.statement = Statement('TRIOBEBB', None,'EUR')
+        self.statement = Statement('TRIODEF1', None,'EUR')
         self.fin = filename
         self.statement.currency = 'EUR'
 
@@ -35,23 +36,24 @@ class TriodosBeParser(CsvStatementParser):
         super() implementation will call to split_records and parse_record to
         process the file.
         """
-        stmt = super(TriodosBeParser, self).parse()
+        stmt = super(TriodosDeParser, self).parse()
         recalculate_balance(stmt)
         return stmt
 
     def split_records(self):
         """Return iterable object consisting of a line per transaction
         """
-        return csv.reader(self.fin)
+        return csv.reader(self.fin, delimiter=';')
 
     def parse_record(self, line):
         """Parse given transaction line and return StatementLine object
         """
-        if (self.statement.account_id == None):
-            self.statement.account_id =  line[1]
-        stmtline = super(TriodosBeParser, self).parse_record(line)
-        stmtline.trntype = 'DEBIT' if stmtline.amount < 0 else 'CREDIT'
-        stmtline.bank_account_to = BankAccount(line[4], line[3])
+        stmtline = super(TriodosDeParser, self).parse_record(line)
+        """ As the amount is always positive, we negate it,
+        if the amount is debit (= S[oll])
+        """
+        if line[12] == "S":
+            stmtline.amount = -stmtline.amount
         return stmtline
 
     def parse_float(self, value):

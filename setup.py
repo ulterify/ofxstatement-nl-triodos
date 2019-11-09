@@ -9,9 +9,9 @@ version = "0.0.1"
 with open('README.rst') as f:
     long_description = f.read()
 
-setup(name='ofxstatement-be-triodos',
+setup(name='ofxstatement-de-triodos',
       version=version,
-      author="Bernard Butaye",
+      author="pianoslum",
       author_email="",
       url="https://github.com/renardeau/ofxstatement-be-triodos",
       description=("ofxstatement plugin for parsing Belgian Triodos bank's CSV statements to OFX"),
@@ -32,7 +32,7 @@ setup(name='ofxstatement-be-triodos',
       namespace_packages=["ofxstatement", "ofxstatement.plugins"],
       entry_points={
           'ofxstatement':
-          ['triodosbe = ofxstatement.plugins.triodosbe:TriodosBePlugin']
+          ['triodosde = ofxstatement.plugins.triodosde:TriodosDePlugin']
           },
       install_requires=['ofxstatement'],
       include_package_data=True,
