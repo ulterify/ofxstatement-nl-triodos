@@ -1,5 +1,5 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Triodos BE plugin for ofxstatement
+Triodos DE plugin for ofxstatement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This project provides  an `ofxstatement`_ plugin for converting the German Triodos bank's CSV format statements to OFX.
