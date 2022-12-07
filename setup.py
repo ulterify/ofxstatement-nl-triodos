@@ -11,10 +11,10 @@ with open('README.rst') as f:
 
 setup(name='ofxstatement-de-triodos',
       version=version,
-      author="pianoslum",
+      author="ulterify",
       author_email="",
-      url="https://github.com/renardeau/ofxstatement-be-triodos",
-      description=("ofxstatement plugin for parsing Belgian Triodos bank's CSV statements to OFX"),
+      url="https://github.com/ulterify/ofxstatement-nl-triodos",
+      description=("ofxstatement plugin for parsing Dutch Triodos bank's CSV statements to OFX"),
       long_description=long_description,
       license="GPLv3",
       keywords=["ofx", "banking", "statement", "triodos", "csv"],
